@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-center h-100">
+  <form class="form-signin text-center align-self-center">
+    <h2>LOGIN</h2>
+    <p>{{message}}</p>
+    <ul class="list-unstyled">
+      <li><a href=".auth/login/github">Login with GitHub</a></li>
+      <li><a href=".auth/login/twitter">Login with Twitter</a></li>
+      <li><a href=".auth/login/bub">Login with BubHub</a></li>
+    </ul>
+    <!--        <button type="button" (click)="onSubmit()" *ngIf="!authService.isLoggedIn">Auth Login</button>-->
+    <!--        <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>-->
+    <h2>User details</h2>
+
+    <div *ngIf="user$ | async as user">
+      <pre>{{ user | json }}</pre>
+
+      <h3>Username:</h3>
+      {{ user.clientPrincipal.userDetails }}
+    </div>
+
+    <br>
+    <a href=".auth/logout">Logout</a>
+  </form>
+</div>
