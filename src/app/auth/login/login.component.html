@@ -1,24 +1,31 @@
 <div class="d-flex justify-content-center h-100">
   <form class="form-signin text-center align-self-center">
-    <h2>LOGIN</h2>
-    <p>{{ message$ | async }}</p>
-    <ul class="list-unstyled">
-      <li><a href=".auth/login/github">Login with GitHub</a></li>
-      <li><a href=".auth/login/twitter">Login with Twitter</a></li>
-      <li><a href=".auth/login/bub">Login with BubHub</a></li>
-    </ul>
+    <p *ngIf="message$ | async">{{ message$ | async }}</p>
+
     <!--        <button type="button" (click)="onSubmit()" *ngIf="!authService.isLoggedIn">Auth Login</button>-->
     <!--        <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>-->
-    <h2>User details</h2>
 
     <div *ngIf="user$ | async as user">
+      <h3>User details</h3>
       <pre>{{ user | json }}</pre>
 
-      <h3>Username:</h3>
-      {{ user.clientPrincipal.userDetails }}
-    </div>
+      <div *ngIf="user.clientPrincipal; else elseBlock">
+        <h3>Username: <small>{{ user.clientPrincipal.userDetails }}</small></h3>
 
-    <br>
-    <a href=".auth/logout">Logout</a>
+        <br>
+        <a href=".auth/logout">Logout</a>
+      </div>
+
+    </div>
+    <ng-template #elseBlock>
+      <h2>LOGIN</h2>
+      <ul class="list-unstyled">
+        <li><a href=".auth/login/github">Login with GitHub</a></li>
+        <li><a href=".auth/login/twitter">Login with Twitter</a></li>
+        <li><a href=".auth/login/bub">Login with BubHub</a></li>
+      </ul>
+    </ng-template>
+
+
   </form>
 </div>
