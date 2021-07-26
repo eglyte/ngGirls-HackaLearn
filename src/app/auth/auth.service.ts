@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
     providedIn: 'root'
 })
 export class AuthService {
-    public redirectUrl: string | undefined;
+    public redirectUrl!: string;
     public isLoggedIn = false;
 
     constructor(public router: Router, private httpClient: HttpClient) {
@@ -16,6 +16,10 @@ export class AuthService {
 
     getUser() {
       return this.httpClient.get('.auth/me');
+    }
+
+    getHello(name: string) {
+      return this.httpClient.get(`/api/HelloWorld?name=${name}`);
     }
 /*    login(): Observable<boolean> {
         return of(true).pipe(

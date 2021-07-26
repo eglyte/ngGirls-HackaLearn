@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
     styleUrls: [ './login.component.scss' ]
 })
 export class LoginComponent implements OnInit {
-    message: string | undefined;
+    message$!: Observable<any>;
     user$!: Observable<any>;
 
     constructor(public authService: AuthService,
@@ -17,15 +17,18 @@ export class LoginComponent implements OnInit {
     }
 
     setMessage() {
-        this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
+        // this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
     }
 
     ngOnInit() {
       this.user$ = this.authService.getUser();
+
+      this.message$ = this.authService.getHello('Test');
+
     }
 
     onSubmit() {
-        this.message = 'Trying to log in ...';
+        // this.message = 'Trying to log in ...';
 
         /*this.authService.login().subscribe(() => {
             this.setMessage();
