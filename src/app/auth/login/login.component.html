@@ -1,6 +1,9 @@
 <div class="d-flex justify-content-center h-100">
   <form class="form-signin text-center align-self-center">
-    <p *ngIf="message$ | async">{{ message$ | async }}</p>
+    <p *ngIf="message$ | async as message">
+      {{ message.responseMessage }}<br>
+      {{ message.clientPrincipal | json }}<br>
+    </p>
 
     <!--        <button type="button" (click)="onSubmit()" *ngIf="!authService.isLoggedIn">Auth Login</button>-->
     <!--        <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>-->
@@ -10,7 +13,7 @@
       <pre>{{ user | json }}</pre>
 
       <div *ngIf="user.clientPrincipal; else elseBlock">
-        <h3>Username: <small>{{ user.clientPrincipal.userDetails }}</small></h3>
+        <h3>Username: <small>{{ user.clientPrincipal?.userDetails }}</small></h3>
 
         <br>
         <a href=".auth/logout">Logout</a>

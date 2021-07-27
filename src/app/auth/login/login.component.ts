@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
       this.user$ = this.authService.getUser();
 
-      this.message$ = this.authService.getHello('Test');
+      this.message$ = this.authService.getHello();
     }
 
     onSubmit() {

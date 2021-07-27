@@ -18,8 +18,8 @@ export class AuthService {
       return this.httpClient.get('.auth/me');
     }
 
-    getHello(name: string) {
-      return this.httpClient.post(`/api/HelloWorld`, {},{responseType: 'text'});
+    getHello() {
+      return this.httpClient.post(`/api/HelloWorld`, {});
     }
 /*    login(): Observable<boolean> {
         return of(true).pipe(
