@@ -19,7 +19,7 @@ export class AuthService {
     }
 
     getHello(name: string) {
-      return this.httpClient.get(`/api/HelloWorld?name=${name}`);
+      return this.httpClient.post(`/api/HelloWorld`, {},{responseType: 'text'});
     }
 /*    login(): Observable<boolean> {
         return of(true).pipe(

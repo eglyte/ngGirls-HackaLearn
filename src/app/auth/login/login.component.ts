@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
       this.user$ = this.authService.getUser();
 
       this.message$ = this.authService.getHello('Test');
-
     }
 
     onSubmit() {
